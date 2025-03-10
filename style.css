@@ -1,0 +1,377 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #084f5b; 
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Make header container transparent */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100vw;
+    margin-bottom: 20px; /* Space between header and container */
+   
+}
+
+
+.logo-column {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.logo-column.left {
+    align-items: flex-start; 
+    margin-left: 3vh;
+}
+
+.logo-column.right {
+    align-items: flex-end; 
+    margin-right: 12vh;
+}
+
+.logo {
+    height: 16vh;
+}
+
+
+.title {
+    text-align: center;
+    flex-grow: 1; /*  title take remaining space */
+    margin: 3px 10px; /* margin separate  logos */
+    width: 100%;
+  
+    margin: 0 auto;
+}
+
+.title h1 {
+    font-size: 40px;
+    color: #ffffff; 
+    margin: 15px 0;
+    text-decoration: underline;
+}
+
+.title h2 {
+    font-size: 25px;
+    color: #ffffff;
+    margin: 10px 0;
+     text-decoration: underline;
+}
+
+.title h3 {
+    font-size: 40px;
+    color: #e6dada; 
+    margin: 5px 0;
+}
+.title h1 a {
+    text-decoration: underline; /* Underline the link inside h1 */
+}
+
+/* Add gap between h2 and h3 */
+.title h2 + h3 {
+    margin-top: 40px; /* Increase the gap between h2 and h3 */
+}
+
+.date-time-container {
+    background-color: rgb(207 205 203 / 88%); /* Semi-transparent white background  */
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space between date-time and container */
+     text-align: center;
+    width: 100%;
+    max-width: 100%; 
+ } 
+
+.date-time-container p {
+    margin: 0;
+    font-size: 20px;
+    color: #333; 
+}
+
+.weather-container {
+    max-width: 100%; /* Full width */
+    width: 100%;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Add horizontal scroll for small screens */
+}
+
+
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr); /* 7 card single row */
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    text-align: center;
+    min-width: 1400px; /* Minimum width to prevent wrapping */
+}
+
+.weather-card {
+    background: #ffffffe7;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 47vh;
+    
+}
+
+.weather-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 4px 4px 15px rgba(107, 7, 7, 0.773);
+}
+
+.weather-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 7px;
+}
+.weather-card p {
+    font-size: 14px;
+    color: #555;
+    margin:auto;
+}
+/* .weather-card:nth-child(7) { */
+    /* grid-column: 2 / 3; Place 7th card  middle third row */
+/* } */
+.full{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gauge {
+    background: #e0e0e0;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 11px solid #333;
+    position: relative;
+  }
+  .label {
+    position: absolute;
+    font-size: 13px;
+    color: #333;
+    transform: rotate(var(--angle)) translateY(-90px);
+    text-align: center; /* Center the text */
+    width: 20px;
+    left: 50%; 
+    top: 50%; 
+    margin-left: -10px; 
+    margin-top: -10px;   
+  }
+  /* The needle element */
+  .needle {
+    position: absolute;
+    width: 3px;
+    height: 60px;
+    background: red;
+    top: 40px;  /* Positioned so that its bottom aligns with the center */
+    left: 50%;
+    transform-origin: bottom center;
+    /* Rotate the needle based on the custom --rotation property (adjust as needed) */
+    transform: translateX(-50%) rotate(var(--rotation, 0deg));
+  }
+
+  /* A small center dot for aesthetics */
+  .center-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* A label to display the wind speed value */
+  .gauge-value {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 35px;
+    font-size: 13px;
+    color: #333;
+    font-weight: bold;
+  }
+  .thermometer {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    justify-content: center;
+  }
+  .thermometer .scale {
+    width: 20px;
+    height: 230px;
+    background: linear-gradient(to top, red, orange, yellow);
+    border: 2px solid #000;
+    border-radius: 10px;
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .thermometer .scale::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: red;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .thermometer .labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 230px;
+  }
+  .thermometer .labels.right {
+    margin-left: 10px;
+    text-align: left;
+  }
+  .thermometer .labels span {
+    font-size: 12px;
+  }
+.unit-label {
+    font-size: 19px;
+    color: black;
+    position: absolute;
+    top: 22px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    gap: 6vw;
+    align-items: center;
+   
+}
+
+.digital-display {
+    font-size: 21px;
+    font-family: 'Digital-7', sans-serif;
+    background: #000;
+    color: #0f0;
+    padding: 5px 8px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: -1vh;
+    
+}
+
+.gauge-buttons {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    font-size: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.unit-btn, .zero-btn {
+    font-weight: bold;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for the charts */
+    gap: 20px;
+    overflow-x: auto; /* Horizontal scroll for small screens */
+    padding: 20px;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.chart {
+        width: 30vw;
+        height: 300px; /* Fixed height */
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       
+    }
+     canvas {
+        display: block;
+        box-sizing: border-box;
+        height: 300px;
+        width: 427px;
+        padding: 1vw;
+        margin-bottom: 3vw;
+    }
+
+h3 {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.weather-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .weather-grid {
+        grid-template-columns: repeat(4, 1fr); 
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .weather-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .weather-grid {
+        grid-template-columns: 1fr; 
+    }
+}

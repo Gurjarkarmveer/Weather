@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header-container">
+        <!-- Left Logos -->
+        <div class="logo-column left">
+            <img src="C:\Users\JT00009\Downloads\logo2.png" alt="Logo 1" class="logo">
+            <img src="C:\Users\JT00009\Downloads\g20.png" alt="Logo 2" class="logo">
+        </div>
+
+        <!-- Title Section -->
+        <div class="title">
+            <h1>स्वचालित मौसम स्टेशन डेटा प्रदर्शन के लिए डैशबोर्ड</h1>
+            <h2>Dashboard for Automatic Weather Station Data Display</h2>
+            <h3>भारतीय अंतरिक्ष अनुसंधान संगठन, अंतरिक्ष विभाग</h3>
+            <h3>Indian Space Research Organisation, Department of Space</h3>
+            <h3>भारत सरकार/Government of India</h3>
+        </div>
+
+        <!-- Right Logos -->
+        <div class="logo-column right">
+            <img src="C:\Users\JT00009\Downloads\Emb.png" alt="Logo 3" class="logo">
+            <img src="C:\Users\JT00009\Downloads\NRSC_gj_logo_27022024.png" alt="Logo 4" class="logo">
+        </div>
+    </div>
+    <div class="date-time-container">
+        <p><strong>STATE:</strong> RAJASTHAN &nbsp; <strong>DISTRICT:</strong> JODHPUR &nbsp; <strong>STATION:</strong> RRSC-W &nbsp; <strong>DATE:</strong> <span id="currentDate">2025-XX-XX</span> &nbsp; <strong>TIME:</strong> <span id="currentTime">09:00:00 IST</span></p>
+    </div>
+
+    <div class="weather-container">
+        <div class="weather-grid">
+            <!-- Wind Speed -->
+            <div class="weather-card">
+                <h3>Wind Speed (Km/h)</h3>
+                <div class="gauge"id="windSpeedGauge">
+                    <div class="label" style="--angle: 0deg;">12</div>
+                    <div class="label" style="--angle: 25deg;">14</div>
+                    <div class="label" style="--angle: 45deg;">16</div>
+                    <div class="label" style="--angle: 68deg;">18</div>
+                    <div class="label" style="--angle: 90deg;">20</div>
+                    <div class="label" style="--angle: 114deg;">22</div>
+                    <div class="label" style="--angle: 135deg;">24</div>
+                    <div class="label" style="--angle: 225deg;">0</div>
+                    <div class="label" style="--angle: 245deg;">2</div>
+                    <div class="label" style="--angle: 270deg;">4</div>
+                    <div class="label" style="--angle: 292deg;">6</div>
+                    <div class="label" style="--angle: 315deg;">8</div>
+                    <div class="label" style="--angle: 334deg;">10</div>
+                    <!-- The needle rotation is set to 45deg as an example -->
+                    <div class="needle" id="windSpeedNeedle"style="--rotation: 0deg;"></div>
+                    <div class="center-dot"></div>
+                    <div class="gauge-value" id="windSpeedValue">0 km/h</div>
+                  </div>
+                <p>Day Max:<span id="WindMax">--</span></p>
+                <p>Day Min: <span id="WindMin">--</span></p>
+                <p>Pre.Day Max:<span id="WindPrevMax">--</span></p>
+                <p>Pre. Day Min:<span id="WindPrevMin">--</span></p>
+            </div>
+
+            <!-- Wind Direction -->
+            <div class="weather-card">
+                <h3>Wind Direction (Degrees)</h3>
+                <div class="gauge"id="windDirectionGauge">
+                    <div class="label" style="--angle: 0deg;">N</div>
+                    <div class="label" style="--angle: 20deg;">NNE</div>
+                    <div class="label" style="--angle: 45deg;">NE</div>
+                    <div class="label" style="--angle: 68deg;">ENE</div>
+                    <div class="label" style="--angle: 90deg;">E</div>
+                    <div class="label" style="--angle: 110deg;">ESE</div>
+                    <div class="label" style="--angle: 135deg;">SE</div>
+                    <div class="label" style="--angle: 158deg;">SSE</div>
+                    <div class="label" style="--angle: 180deg;">S</div>
+                    <div class="label" style="--angle: 200deg;">SSW</div>
+                    <div class="label" style="--angle: 225deg;">SW</div>
+                    <div class="label" style="--angle: 245deg;">WSW</div>
+                    <div class="label" style="--angle: 270deg;">W</div>
+                    <div class="label" style="--angle: 287deg;">WNW</div>
+                    <div class="label" style="--angle: 315deg;">NW</div>
+                    <div class="label" style="--angle: 337deg;">NNW</div>
+                    <div class="needle"id="windDirectionNeedle" style="--rotation: 0deg;"></div>
+                    <div class="center-dot"></div>
+                    <div class ="gauge-value"id="windDirectionvalue">0°N</div>
+                </div>
+                <p>Day Average:<span id="WindAvrAngDir">--</span></p>
+                <P>Pre .Day Average:<span id="WindAvrAngPrevDir">--</span></P>
+
+            </div>
+           
+
+            <!-- Station Pressure -->
+            <div class="weather-card">
+                <h3>Station Pressure (hPa)</h3>
+                <div class="gauge"id="stationPressureGauge">
+                    <div class="unit-label">PSI</div>
+                     <div class="digital-display" id="stationPressure">0.0000 hPa</div>
+                   <div class="gauge-buttons">
+                     <button class="unit-btn">UNIT</button>
+                     <button class="power-btn">⏻</button>
+                     <button class="zero-btn">ZERO</button>
+                    </div>
+                </div>
+                <p>Day Max:<span id="StPressMax">--</span></p>
+                <p>Day Min: <span id="StPressMin">--</span></p>
+                <p>Pre.Day Max:<span id="StPressPrevMax">--</span></p>
+                <p>Pre. Day Min:<span id="StPressPrevMin">--</span></p>
+            
+            </div>
+            <!-- Mean Sea Pressure -->
+            <div class="weather-card">
+                <h3>Mean Sea Pressure (hPa/gpm)</h3>
+                <div class="gauge"id="meanSeaPressureGauge">
+                    <div class="unit-label">PSI</div>
+                     <div class="digital-display" id="meanSeaPressure">0.0000 hpa/gpm</div>
+                   <div class="gauge-buttons">
+                     <button class="unit-btn">UNIT</button>
+                     <button class="power-btn">⏻</button>
+                     <button class="zero-btn">ZERO</button>
+                    </div>
+                </div>
+                <p>Day Max:<span id="MeanSeaPressMax">--</span></p>
+                <p>Day Min: <span id="MeanSeaPressMin">--</span></p>
+                <p>Pre.Day Max:<span id="WindPrevMax">--</span></p>
+                <p>Pre. Day Min:<span id="WindPrevMin">--</span></p>
+            </div>
+
+            <!-- Temperature -->
+            <div class="weather-card">
+                <h3>Temperature (°C)</h3>
+                <div class="full">
+                   <div class="temp">
+                     <div class="thermometer">
+                       <div class="scale" id="tempScale"></div>
+                       <div class="labels right" id="tempLabels">
+                        <span>50°C</span>
+                        <span>40°C</span>
+                        <span>30°C</span>
+                        <span>20°C</span>
+                        <span>10°C</span>
+                        <span>0°C</span>
+                        <span>-10°C</span>
+                        <span>-20°C</span>
+                        <span>-30°C</span>
+                        <span>-40°C</span>
+                    </div>
+                  </div>
+                  <p class="temp-value" id="temperatureValue">9.4°C</p>
+                </div>
+                <div class="details">
+                    <div class="digital-display" id="temperatureValue">9.4°C</div>
+                    <div class="reading">
+                    <p>Day Max: <span id="tempMax">--</span></p>
+                    <p>Day Min: <span id="tempMin">--</span></p>
+                    <p>Pre. Day Max:<span id="tempPrevMax">--</span></p>
+                    <p>Pre. Day Min:<span id="tempPrevMin">--</span></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Relative Humidity -->
+            <div class="weather-card">
+                <h3>Relative Humidity (%)</h3>
+                <div class="full">
+                    <div class="temp">
+                     <div class="thermometer">
+                        <div class="scale" id="humidityScale"></div>
+                        <div class="labels right" id="humidityLabels">
+                            <span>90%</span>
+                            <span>80%</span>
+                            <span>70%</span>
+                            <span>60%</span>
+                           <span>50%</span>
+                           <span>40%</span>
+                           <span>30%</span>
+                           <span>20%</span>
+                           <span>10%</span>
+                           <span>0%</span>
+                        </div>
+                    </div>
+                       <p class="humidity-value" id="humidityValue">90%</p>
+                    </div>
+                  <div class="details">
+                      <div class="digital-display" id="humidityValue">18%</div>
+                        <div class="reading">
+                            <p>Day Max: <span id="humidityMax">--</span></p>
+                            <p>Day Min: <span id="humidityMin">--</span></p>
+                            <p>Pre. Day Max: <span id="humidityPrevMax">--</span></p>
+                            <p>Pre. Day Min: <span id="humidityPrevMin">--</span></p>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rainfall -->
+            <div class="weather-card">
+                <h3>Rainfall (mm)</h3>
+                <div class="full">
+                    <div class="temp">
+                        <div class="thermometer">
+                           <div class="scale" id="rainScale"></div>
+                           <div class="labels right" id="rainLabels">
+                               <span>9 mm</span>
+                               <span>8 mm</span>
+                               <span>7 mm</span>
+                               <span>6 mm</span>
+                               <span>5 mm</span>
+                               <span>4 mm</span>
+                              <span>3 mm</span>
+                              <span>2 mm</span>
+                              <span>1 mm</span>
+                              <span>0 mm</span>
+                            </div>
+                        </div>
+                        <p class="rain-value" id="rainValue">0.0 mm</p>
+                    </div>
+                
+                <div class="details">
+                    <div class="digital-display" id="humidityValue">00 mm</div>
+                        <div class="reading">
+                          <p>Previous Day Rainfall:<span id="rainfallPrev">--</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+         <div class=" graph-container">
+            <div class="chart" id="tempChart">
+               <h3>Air Temperature</h3>
+                <canvas id="temperatureCanvas"></canvas>
+            </div>
+            <div class="chart" id="humidityChart">
+              <h3>Relative Humidity</h3>
+              <canvas id="humidityCanvas"></canvas>
+            </div>
+           <div class="chart" id="windChart">
+            <h3>Wind Direction</h3>
+            <canvas id="windCanvas"></canvas>
+           </div>
+           <div class="chart" id="windSpeedChart">
+            <h3>Wind Speed</h3>
+            <canvas id="windSpeedCanvas"></canvas>
+           </div>
+          <div class="chart" id="rainChart">
+            <h3>Rainfall</h3>
+            <canvas id="rainCanvas"></canvas>
+          </div>
+          <div class="chart" id="pressureChart">
+            <h3>Station Pressure</h3>
+            <canvas id="pressureCanvas"></canvas>
+         </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src = "script.js"></script>
+</body>
+</html>
